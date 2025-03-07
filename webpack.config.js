@@ -5,14 +5,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 // const HTMLInlineCSSWebpackPlugin = require("html-inline-css-webpack-plugin").default;
 const webpack = require("webpack");
 const pkg = require("./package.json");
-const fs = require("fs");
-var coreCSS = "/*not generated yet*/";
 
-const env = process.env.NODE_ENV;
-
-const econfig = {
-  mode: env || "development",
-};
+// const env = process.env.NODE_ENV;
 
 module.exports = function(env, argv) {
   let builddir = argv.mode == "production" ? "dist" : "test";
