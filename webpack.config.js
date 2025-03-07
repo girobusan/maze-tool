@@ -9,7 +9,7 @@ const pkg = require("./package.json");
 // const env = process.env.NODE_ENV;
 
 module.exports = function(env, argv) {
-  let builddir = argv.mode == "production" ? "dist" : "test";
+  let builddir = argv.mode == "production" ? "docs" : "test";
 
   return {
     //externals: ["fs"],
