@@ -1,6 +1,11 @@
 import { Field } from "./data/field";
 import { Pieces, oneColorRandom } from "./data/pieces";
 
+const pieceDict = Pieces.reduce((a, e) => {
+  a[e.icon] = e;
+  return a;
+}, {});
+
 var seedrng = require("seedrandom");
 
 function shuffleArray(array, rnd) {
@@ -65,4 +70,26 @@ export function seed2pos(seed) {
     positions.push({ x: e.x, y: e.y, color: "black", piece: B[i] });
   });
   return positions;
+}
+
+export function encodePosition(pos) {
+  return pos
+    .map((e) => `${p.piece.icon}:${p.color.substring(0, 1)}:${p.x}:${p.y}`)
+    .join(",");
+}
+
+export function decodePosition(str) {
+  return str.split(",").map((e) => {
+    let vals = e.split(":");
+    return {
+      x: +vals[2],
+      y: +vals[3],
+      color: vals[1] == "b" ? "black" : "white",
+      piece: pieceDict[vals[0]],
+    };
+  });
+}
+
+export function randomPos() {
+  return seed2pos(Math.random());
 }

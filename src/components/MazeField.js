@@ -3,7 +3,7 @@ import { html } from "htm/preact";
 import { h } from "preact";
 import { Field } from "../data/field";
 import { isBlack } from "../data/field_fns";
-import { seed2pos } from "../util";
+import { seed2pos, randomPos } from "../util";
 const d3 = require("d3");
 const mod = 32;
 
@@ -77,7 +77,7 @@ export function MazeField({ seed = "helloy" }) {
 
   return html`<svg
     viewBox="0 0 ${mod * 10 + 2} ${mod * 6 + 2}"
-    style="max-width:500px; overflow:visible"
+    style="max-width:500px; overflow:visible; display: block"
   >
     <g class="fields" ref=${FLDS}></g>
     <g class="pawns" ref=${PWNS}></g>

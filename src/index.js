@@ -1,8 +1,8 @@
 import { h, render } from "preact";
-import { MazeField } from "./components/MazeField";
+import { MazeGenerator } from "./components/MazeGenerator";
 
 console.log("maze positions");
 
 const container = document.querySelector("#mazelevel");
 
-render(h(MazeField), container);
+render(h(MazeGenerator), container);

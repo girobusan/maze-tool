@@ -1,3 +1,5 @@
-# MAZE game puzzle generator
+# "Maze" game puzzle generator
 
-Tool to generate MAZE game initial positions by seed.
+Tool to generate/view "Maze" game initial positions.
+
+About the game: [Maze (1982)](https://boardgamegeek.com/boardgame/6268/maze)
