@@ -6,6 +6,33 @@ const pieceDict = Pieces.reduce((a, e) => {
   return a;
 }, {});
 
+const mates = [
+  {
+    x: 1,
+    y: 3,
+    color: "white",
+    piece: pieceDict.M,
+  },
+  {
+    x: 1,
+    y: 4,
+    color: "white",
+    piece: pieceDict.M,
+  },
+  {
+    x: 10,
+    y: 3,
+    color: "black",
+    piece: pieceDict.M,
+  },
+  {
+    x: 10,
+    y: 4,
+    color: "black",
+    piece: pieceDict.M,
+  },
+];
+
 var seedrng = require("seedrandom");
 
 function shuffleArray(array, rnd) {
@@ -30,32 +57,7 @@ export function seed2pos(seed) {
   const RNG = seedrng(seed);
   const positions = [];
   const Mate = Pieces.filter((e) => e.name == "Mate")[0];
-  //white mates
-  positions.push({
-    x: 1,
-    y: 3,
-    color: "white",
-    piece: Mate,
-  });
-  positions.push({
-    x: 1,
-    y: 4,
-    color: "white",
-    piece: Mate,
-  });
-  //black mates
-  positions.push({
-    x: 10,
-    y: 3,
-    color: "black",
-    piece: Mate,
-  });
-  positions.push({
-    x: 10,
-    y: 4,
-    color: "black",
-    piece: Mate,
-  });
+  mates.forEach((m) => positions.push(m));
   //
   //white pieces
   const W = shuffleArray(oneColorRandom.slice(0), RNG);
@@ -88,6 +90,25 @@ export function decodePosition(str) {
       piece: pieceDict[vals[0]],
     };
   });
+}
+export function compressPosition(pos) {
+  return pos
+    .map((e) => e.piece.icon)
+    .filter((e) => e != "M")
+    .join("");
+}
+
+export function uncompressPosition(str) {
+  const starts = Field.filter((e) => e.type == "start");
+  const pcs = str.toUpperCase().split("");
+
+  let position = [];
+  mates.forEach((m) => position.push(m));
+  starts.forEach((f, i) => {
+    // console.log(pcs[i], pieceDict[pcs[i]]);
+    position.push({ x: f.x, y: f.y, color: f.side, piece: pieceDict[pcs[i]] });
+  });
+  return position;
 }
 
 export function randomPos() {
