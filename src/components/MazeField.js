@@ -34,6 +34,15 @@ function drawField(pos, cont, pawnscont) {
       },
       (exit) => exit.remove(),
     );
+  d3.select(cont)
+    .append("line")
+    .attr("stroke-width", 4)
+    .attr("stroke", "gray")
+    .attr("x1", mod * 5)
+    .attr("x2", mod * 5)
+    .attr("y1", 0)
+    .attr("y2", mod * 6);
+
   // const pos =  pos;
 
   d3.select(pawnscont)

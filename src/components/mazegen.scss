@@ -17,7 +17,8 @@ body {
   .buttons {
     display: flex;
     flex-direction: row;
-    width: 100%;
+    /* width: 100%; */
+    margin: 0 auto;
     gap: 12px;
   }
 }
@@ -44,7 +45,7 @@ body {
 .MazeField {
   display: block;
   margin: 0 auto;
-  margin-bottom: 1em;
+  margin-bottom: 24px;
 
   text {
     user-select: none;
