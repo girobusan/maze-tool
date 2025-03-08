@@ -13,6 +13,15 @@ body {
     sans-serif;
 }
 
+.mazegen {
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 12px;
+  }
+}
+
 #mazelevel {
   margin: 0 auto;
   max-width: 750px;
@@ -36,9 +45,14 @@ body {
   display: block;
   margin: 0 auto;
   margin-bottom: 1em;
+
+  text {
+    user-select: none;
+  }
 }
 
 .field_tooltip {
   background-color: white;
   padding: 0.5em;
+  border: 1px solid gray;
 }

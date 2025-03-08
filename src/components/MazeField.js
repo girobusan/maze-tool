@@ -70,7 +70,6 @@ function drawField(pos, cont, pawnscont) {
       return d.piece.hint || "?";
     })
     .on("mouseover", (e) => {
-      console.log(e.target);
       Tooltip.show(e.currentTarget.dataset.hint, e);
     })
     .on("mouseleave", (e) => Tooltip.hide())

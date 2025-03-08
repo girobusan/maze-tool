@@ -18,6 +18,11 @@ function generate() {
   return uncompressPosition(window.location.search);
 }
 
+function copyLnk() {
+  const t = window.location;
+  navigator.clipboard.writeText(t);
+}
+
 function checkPos() {
   if (!window.location.search) {
     return null;
@@ -26,15 +31,21 @@ function checkPos() {
 }
 
 export function MazeGenerator() {
-  let [pos, setPos] = useState(checkPos());
+  let pos = checkPos();
 
   useEffect(() => {
+    pos = checkPos();
     // setPos(checkPos());
   });
 
   return html`<div class="mazegen">
-    <h1>Maze position viewer</h1>
+    <h1>Maze position viewer/generator</h1>
     <${MazeField} pos=${pos} />
-    <button onClick=${generate}>Generate random position</button>
+    <div class="buttons">
+      <button onClick=${generate}>Generate random position</button>
+      <button onClick=${copyLnk} disabled=${pos ? false : true}>
+        Copy link
+      </button>
+    </div>
   </div>`;
 }
