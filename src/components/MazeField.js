@@ -10,7 +10,7 @@ const mod = 32;
 const Tooltip = tooltip("field_tooltip");
 
 function drawField(pos, cont, pawnscont) {
-  console.log("draw pos", pos);
+  // console.log("draw pos", pos);
   d3.select(cont)
     .selectAll("g.field")
     .data(Field)

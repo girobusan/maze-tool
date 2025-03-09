@@ -7,6 +7,7 @@ require("./mazegen.scss");
 import {
   seed2pos,
   randomPos,
+  easyPosition,
   encodePosition,
   decodePosition,
   compressPosition,
@@ -17,6 +18,14 @@ function generate() {
   const p = compressPosition(randomPos());
   window.location.search = "?" + p;
   return uncompressPosition(window.location.search);
+}
+function generateEasy() {
+  const pos = easyPosition();
+  console.log(pos);
+  // return pos;
+  const p = compressPosition(pos);
+  window.location.search = "?" + p;
+  //return uncompressPosition(window.location.search);
 }
 
 function copyLnk() {
@@ -43,6 +52,7 @@ export function MazeGenerator() {
     <h1>“Maze” position viewer/generator</h1>
     <div class="buttons">
       <button onClick=${generate}>Generate random position</button>
+      <button onClick=${generateEasy}>Generate easier position</button>
       <button onClick=${copyLnk} disabled=${pos ? false : true}>
         Copy link to this position
       </button>

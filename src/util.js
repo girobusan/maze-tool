@@ -1,5 +1,6 @@
 import { Field } from "./data/field";
 import { Pieces, oneColorRandom } from "./data/pieces";
+import { isBlack } from "./data/field_fns";
 
 const pieceDict = Pieces.reduce((a, e) => {
   a[e.icon] = e;
@@ -35,7 +36,8 @@ const mates = [
 
 var seedrng = require("seedrandom");
 
-function shuffleArray(array, rnd) {
+function shuffleArray(array_in, rnd) {
+  let array = array_in.slice(0);
   let currentIndex = array.length;
 
   // While there remain elements to shuffle...
@@ -56,7 +58,7 @@ function shuffleArray(array, rnd) {
 export function seed2pos(seed) {
   const RNG = seedrng(seed);
   const positions = [];
-  const Mate = Pieces.filter((e) => e.name == "Mate")[0];
+  // const Mate = Pieces.filter((e) => e.name == "Mate")[0];
   mates.forEach((m) => positions.push(m));
   //
   //white pieces
@@ -72,6 +74,23 @@ export function seed2pos(seed) {
     positions.push({ x: e.x, y: e.y, color: "black", piece: B[i] });
   });
   return positions;
+}
+
+function pieces2fields(pcs, flds, color) {
+  if (pcs.length != flds.length) {
+    console.log("Wrong number of something", pcs, flds);
+  }
+  return flds.map((e, i) => {
+    // console.log(
+    //   color,
+    //   "Piece",
+    //   pcs[i].icon,
+    //   "on",
+    //   isBlack(e.x, e.y) ? "black" : "white",
+    //   `${e.x}:${e.y}`,
+    // );
+    return { x: e.x, y: e.y, color: color || e.side, piece: pcs[i] };
+  });
 }
 
 export function encodePosition(pos) {
@@ -93,6 +112,23 @@ export function decodePosition(str) {
 }
 export function compressPosition(pos) {
   return pos
+    .sort((a, b) => {
+      if (a.x > b.x) {
+        return 1;
+      }
+      if (a.x < b.x) {
+        return -1;
+      }
+      // if x's are equal...
+      if (a.y > b.y) {
+        return 1;
+      }
+      if (a.y < b.y) {
+        return -1;
+      }
+      //
+      return 0;
+    })
     .map((e) => e.piece.icon)
     .filter((e) => e != "M")
     .join("");
@@ -113,4 +149,55 @@ export function uncompressPosition(str) {
 
 export function randomPos() {
   return seed2pos(Math.random());
+}
+
+export function easyPosition() {
+  let positions = [];
+  positions.info = "Easier one";
+  mates.forEach((m) => positions.push(m));
+  //half pieces, no mates
+  const halfPieces = Pieces.filter((e) => e.icon != "M");
+  //
+  //whites
+  //// black fields
+  const whites_black = Field.filter((f) => f.side == "white")
+    .filter((f) => isBlack(f.x, f.y))
+    .filter((f) => f.type == "start");
+  //
+  const whites_white = Field.filter((f) => f.side == "white")
+    .filter((f) => !isBlack(f.x, f.y))
+    .filter((f) => f.type == "start");
+  //shuffle 1
+  const white_on_black = shuffleArray(halfPieces, Math.random);
+  positions = positions.concat(
+    pieces2fields(white_on_black, whites_black, "white"),
+  );
+  //sguffle 2
+  const white_on_white = shuffleArray(halfPieces, Math.random);
+  positions = positions.concat(
+    pieces2fields(white_on_white, whites_white, "white"),
+  );
+  //
+  //blacks
+  //// black fields
+  const blacks_black = Field.filter((f) => f.side == "black")
+    .filter((f) => isBlack(f.x, f.y))
+    .filter((f) => f.type == "start");
+  //
+  const blacks_white = Field.filter((f) => f.side == "black")
+    .filter((f) => !isBlack(f.x, f.y))
+    .filter((f) => f.type == "start");
+  //shuffle 1
+  const black_on_black = shuffleArray(halfPieces, Math.random);
+  positions = positions.concat(
+    pieces2fields(black_on_black, blacks_black, "black"),
+  );
+  //sguffle 2
+  const black_on_white = shuffleArray(halfPieces, Math.random);
+  positions = positions.concat(
+    pieces2fields(black_on_white, blacks_white, "black"),
+  );
+  //
+  console.log("Generated", positions);
+  return positions;
 }
