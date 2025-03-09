@@ -81,7 +81,10 @@ function drawField(pos, cont, pawnscont) {
     .on("mouseover", (e) => {
       Tooltip.show(e.currentTarget.dataset.hint, e);
     })
-    .on("mouseleave", (e) => Tooltip.hide())
+    .on("mouseenter", (e) => {
+      Tooltip.show(e.currentTarget.dataset.hint, e);
+    })
+    .on("mouseleave", (_) => Tooltip.hide())
     .append("text")
     .attr("font-family", "inherit")
     .style("user-selectable", "none")
