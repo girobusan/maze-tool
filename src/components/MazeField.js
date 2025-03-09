@@ -27,6 +27,13 @@ function drawField(pos, cont, pawnscont) {
           .attr("stroke-width", 1)
           .attr("stroke", "gray");
 
+        z.append("circle")
+          .attr("cx", mod / 2)
+          .attr("cy", mod / 2)
+          .attr("r", (d) => (d.desert ? mod / 4 : 0))
+          .attr("opacity", 0.2)
+          .attr("fill", "gray");
+
         return z;
       },
       (update) => {
