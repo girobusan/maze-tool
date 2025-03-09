@@ -83,7 +83,7 @@ function drawField(pos, cont, pawnscont) {
     })
     .on("mouseleave", (e) => Tooltip.hide())
     .append("text")
-    .attr("font-family", "system-ui , sans-serif")
+    .attr("font-family", "inherit")
     .style("user-selectable", "none")
     .attr("font-size", mod / 2)
     .attr("dy", mod / 1.5)
@@ -106,7 +106,7 @@ export function MazeField({ pos }) {
   return html`<svg
     class="MazeField"
     viewBox="0 0 ${mod * 10 + 2} ${mod * 6 + 2}"
-    style="max-width:500px; overflow:visible; display: block"
+    style="overflow:visible; display: block"
   >
     <g class="fields" ref=${FLDS}></g>
     <g class="pawns" ref=${PWNS}></g>

@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "preact/hooks";
 import { html } from "htm/preact";
 import { h } from "preact";
 import { MazeField } from "./MazeField";
+import { Legend } from "./Legend";
 require("./mazegen.scss");
 import {
   seed2pos,
@@ -39,13 +40,14 @@ export function MazeGenerator() {
   });
 
   return html`<div class="mazegen">
-    <h1>Maze position viewer/generator</h1>
-    <${MazeField} pos=${pos} />
+    <h1>“Maze” position viewer/generator</h1>
     <div class="buttons">
       <button onClick=${generate}>Generate random position</button>
       <button onClick=${copyLnk} disabled=${pos ? false : true}>
-        Copy link
+        Copy link to this position
       </button>
     </div>
+    <${MazeField} pos=${pos} />
+    <${Legend} />
   </div>`;
 }
