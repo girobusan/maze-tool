@@ -31,8 +31,7 @@ function drawField(pos, cont, pawnscont) {
           .attr("cx", mod / 2)
           .attr("cy", mod / 2)
           .attr("r", (d) => (d.desert ? mod / 4 : 0))
-          .attr("opacity", 0.2)
-          .attr("fill", "gray");
+          .attr("fill", (d) => (isBlack(d.x, d.y) ? "white" : "#eee"));
 
         return z;
       },
