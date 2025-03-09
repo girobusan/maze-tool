@@ -93,7 +93,9 @@ function drawField(pos, cont, pawnscont) {
     .on("mouseleave", (_) => Tooltip.hide())
     .append("text")
     .attr("font-family", "inherit")
+    .attr("font-weight", 500)
     .style("user-selectable", "none")
+
     .attr("font-size", mod / 2)
     .attr("dy", mod / 1.5)
     .attr("dx", mod / 2)

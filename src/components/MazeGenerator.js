@@ -59,5 +59,8 @@ export function MazeGenerator() {
     </div>
     <${MazeField} pos=${pos} />
     <${Legend} />
+    <p class="copyright">
+      © <a href="https://girobusan.github.io">girobusan</a>, 2025
+    </p>
   </div>`;
 }
