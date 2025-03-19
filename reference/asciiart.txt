@@ -1,0 +1,8 @@
+    
+    3 3 . . 1 T
+  L T B . . B 2 2
+M B S S . . 3 S L M
+M R 1 1 . . R B 3 M
+  L 2 R . . T L R
+    2 T . . 1 S
+    

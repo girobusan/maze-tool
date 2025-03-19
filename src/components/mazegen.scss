@@ -89,6 +89,28 @@ html {
   }
 }
 
+.AsciiBlock {
+  text-align: center;
+
+  h3 {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  pre {
+    font-family: "Courier New", Courier, monospace;
+    display: inline-block;
+    margin: 0 auto;
+  }
+
+  margin-bottom: 1rem;
+  margin-top: -2rem;
+
+  @media print {
+    display: none;
+  }
+}
+
 .Legend {
   display: flex;
   flex-direction: row;

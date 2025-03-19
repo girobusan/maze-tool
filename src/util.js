@@ -1,6 +1,7 @@
 import { Field } from "./data/field";
 import { Pieces, oneColorRandom } from "./data/pieces";
 import { isBlack } from "./data/field_fns";
+import makeArt from "./ascii";
 
 const pieceDict = Pieces.reduce((a, e) => {
   a[e.icon] = e;
@@ -200,4 +201,15 @@ export function easyPosition() {
   //
   console.log("Generated", positions);
   return positions;
+}
+
+export function pos2art(pos) {
+  const xs = [5, 6].map((e) => e - 1);
+  const ys = [1, 2, 3, 4, 5, 6].map((e) => e - 1);
+  let art = makeArt();
+  pos.forEach((e) => art.add((e.x - 1) * 2, e.y - 1, e.piece.icon));
+  ys.forEach((y) => {
+    xs.forEach((x) => art.add(x * 2, y, "."));
+  });
+  return art.toString();
 }

@@ -8,6 +8,7 @@ import {
   seed2pos,
   randomPos,
   easyPosition,
+  pos2art,
   encodePosition,
   decodePosition,
   compressPosition,
@@ -22,6 +23,7 @@ function generate() {
 function generateEasy() {
   const pos = easyPosition();
   console.log(pos);
+  console.log(pos2art(pos));
   // return pos;
   const p = compressPosition(pos);
   window.location.search = "?" + p;
@@ -40,6 +42,19 @@ function checkPos() {
   return uncompressPosition(window.location.search.substring(1));
 }
 
+function AsciiBlock({ ascii }) {
+  console.log(ascii);
+  if (!ascii) {
+    return "";
+  }
+  return html`<div class="AsciiBlock">
+    <pre>
+      ${ascii}
+    </pre
+    >
+  </div>`;
+}
+
 export function MazeGenerator() {
   let pos = checkPos();
 
@@ -54,10 +69,18 @@ export function MazeGenerator() {
       <button onClick=${generate}>Generate random position</button>
       <button onClick=${generateEasy}>Generate easier position</button>
       <button onClick=${copyLnk} disabled=${pos ? false : true}>
-        Copy link to this position
+        Copy link
+      </button>
+      <button
+        onClick=${() =>
+      navigator.clipboard.writeText("```\n" + pos2art(pos) + "\n```\n")}
+        disabled=${pos ? false : true}
+      >
+        Copy ASCII art
       </button>
     </div>
     <${MazeField} pos=${pos} />
+    <${AsciiBlock} ascii=${pos ? pos2art(pos) : ""} />
     <${Legend} />
     <p class="copyright">
       © <a href="https://girobusan.github.io">girobusan</a>, 2025
