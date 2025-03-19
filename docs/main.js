@@ -23,7 +23,7 @@
         Copy link
       </button>
       <button
-        onClick=${()=>navigator.clipboard.writeText("```\n"+Mt(t)+"\n```\n")}
+        onClick=${()=>navigator.clipboard.writeText("```\n"+Mt(t)+"```\n")}
         disabled=${!t}
       >
         Copy ASCII art
