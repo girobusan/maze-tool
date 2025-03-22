@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "npx webpack serve --mode development",
+    "watch": "npx webpack --watch --mode development",
     "build": "npx webpack --mode production"
   },
   "author": "",

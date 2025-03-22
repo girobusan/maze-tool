@@ -8,7 +8,7 @@ const pkg = require("./package.json");
 
 // const env = process.env.NODE_ENV;
 
-module.exports = function(env, argv) {
+module.exports = function (env, argv) {
   let builddir = argv.mode == "production" ? "docs" : "test";
 
   return {
@@ -19,6 +19,7 @@ module.exports = function(env, argv) {
     mode: argv.mode,
     entry: {
       main: "./src/index.js",
+      embed: "./src/embed.js",
     },
 
     devtool: argv.mode != "production" ? "inline-source-map" : false,
@@ -104,6 +105,13 @@ module.exports = function(env, argv) {
         minify: false,
         inject: "body",
         template: path.join(__dirname, "src/templates/index.ejs"),
+      }),
+      new HtmlWebpackPlugin({
+        chunks: ["embed"],
+        filename: "embed.html",
+        minify: false,
+        inject: "body",
+        template: path.join(__dirname, "src/templates/embed.ejs"),
       }),
       // new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/loader/]),
       // new HTMLInlineCSSWebpackPlugin(
