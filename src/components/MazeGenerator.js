@@ -1,4 +1,10 @@
-import { useRef, useState, useEffect } from "preact/hooks";
+import {
+  useRef,
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+} from "preact/hooks";
 import { html } from "htm/preact";
 import { h } from "preact";
 import { MazeField } from "./MazeField";
@@ -15,31 +21,20 @@ import {
   uncompressPosition,
 } from "../util";
 
-function generate() {
-  const p = compressPosition(randomPos());
-  window.location.search = "?" + p;
-  return uncompressPosition(window.location.search);
-}
 function generateEasy() {
   const pos = easyPosition();
-  console.log(pos);
+  // console.log(pos);
   console.log(pos2art(pos));
   // return pos;
-  const p = compressPosition(pos);
-  window.location.search = "?" + p;
+  return pos;
+  // window.location.search = "?" + p;
+  // goLoc(p);
   //return uncompressPosition(window.location.search);
 }
 
 function copyLnk() {
   const t = window.location;
   navigator.clipboard.writeText(t);
-}
-
-function checkPos() {
-  if (!window.location.search) {
-    return null;
-  }
-  return uncompressPosition(window.location.search.substring(1));
 }
 
 function AsciiBlock({ ascii }) {
@@ -56,18 +51,31 @@ function AsciiBlock({ ascii }) {
 }
 
 export function MazeGenerator() {
-  let pos = checkPos();
+  let [locPos, setLocPos] = useState(window.location.search.substring(1));
+  let pos = useMemo(() => uncompressPosition(locPos), [locPos]);
 
-  useEffect(() => {
-    pos = checkPos();
-    // setPos(checkPos());
+  //  useEffect(() => {
+  //    console.log("pos", locPos);
+  //pos = uncompressPosition(locPos);
+  // setPos(checkPos());
+  //});
+
+  const posHandler = useCallback((pos_in) => {
+    console.log("In handler", pos_in);
+    const q = compressPosition(pos_in);
+    history.pushState(q, null, "?" + q);
+    setLocPos(q);
   });
 
   return html`<div class="mazegen">
     <h1>“Maze” position viewer/generator</h1>
     <div class="buttons">
-      <button onClick=${generate}>Generate random position</button>
-      <button onClick=${generateEasy}>Generate easier position</button>
+      <button onClick=${() => posHandler(randomPos())}>
+        Generate random position
+      </button>
+      <button onClick=${() => posHandler(generateEasy())}>
+        Generate easier position
+      </button>
       <button onClick=${copyLnk} disabled=${pos ? false : true}>
         Copy link
       </button>

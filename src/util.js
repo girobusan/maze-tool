@@ -112,6 +112,7 @@ export function decodePosition(str) {
   });
 }
 export function compressPosition(pos) {
+  // console.log("PPP", pos);
   return pos
     .sort((a, b) => {
       if (a.x > b.x) {
