@@ -100,6 +100,9 @@ function drawField(pos, cont, pawnscont) {
     .attr("dy", mod / 1.5)
     .attr("dx", mod / 2)
     .attr("text-anchor", "middle")
+    .attr("fill", "lightblue")
+    .transition(2000)
+    .attr("fill", "black")
     .text((d) => d.piece.icon);
 }
 

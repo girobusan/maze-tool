@@ -61,7 +61,6 @@ export function MazeGenerator() {
   //});
 
   const posHandler = useCallback((pos_in) => {
-    console.log("In handler", pos_in);
     const q = compressPosition(pos_in);
     history.pushState(q, null, "?" + q);
     setLocPos(q);
