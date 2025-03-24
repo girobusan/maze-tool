@@ -51,14 +51,22 @@ function AsciiBlock({ ascii }) {
 }
 
 export function MazeGenerator() {
-  let [locPos, setLocPos] = useState(window.location.search.substring(1));
-  let pos = useMemo(() => uncompressPosition(locPos), [locPos]);
+  let [locPos, setLocPos] = useState(
+    window.location.search ? window.location.search.substring(1) : null,
+  );
+  let pos = useMemo(
+    () => (locPos ? uncompressPosition(locPos) : null),
+    [locPos],
+  );
 
-  //  useEffect(() => {
-  //    console.log("pos", locPos);
-  //pos = uncompressPosition(locPos);
-  // setPos(checkPos());
-  //});
+  useEffect(() => {
+    const h = (s) => {
+      // console.log("popstate", s);
+      setLocPos(s.state);
+    };
+    window.onpopstate = h; //("popstate", h);
+    return () => window.removeEventListener("popstate", h);
+  });
 
   const posHandler = useCallback((pos_in) => {
     const q = compressPosition(pos_in);
