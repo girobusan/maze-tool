@@ -62,7 +62,10 @@ export function MazeGenerator() {
   useEffect(() => {
     const h = (s) => {
       // console.log("popstate", s);
-      setLocPos(s.state);
+      const sl =
+        s.state ||
+        (window.location.search ? window.location.search.substring(1) : null);
+      setLocPos(sl);
     };
     window.onpopstate = h; //("popstate", h);
     return () => window.removeEventListener("popstate", h);
