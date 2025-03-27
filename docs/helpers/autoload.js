@@ -5,18 +5,16 @@ window.impHelpers.autoload = {
       "navbar",
       ,
       {
-        logo: "<strong>Level generator</strong>",
+        logo: "<strong>Position generator</strong>",
         link: "index.html",
         //exclude: ["index.html$"],
         links: [
-["https://github.com/girobusan/maze-tool" , "maze-tool@github"],
-          
-          ["https://girobusan.github.io/", "@girobusan"],
-["maze_notes.html", "Notes on 'Maze'"],
+          ["https://girobusan.github.io/", "Girobusan"],
+          ["https://github.com/girobusan/maze-tool", "Maze-tool@github"],
+
+          ["maze_notes.html", "Notes"],
         ],
       },
     ],
-    
-   
   ],
 };
