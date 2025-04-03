@@ -1,4 +1,5 @@
 export default function makeArt(fillChar) {
+  const EOL = "\r\n";
   const art = [];
   const funct = {
     add: function(x, y, l) {
@@ -37,7 +38,7 @@ export default function makeArt(fillChar) {
               : fillChar || " "
             : fillChar || " ";
         }
-        str += "\n";
+        str += EOL;
       }
       // console.log(artDict);
       return str;

@@ -91,7 +91,7 @@ export function MazeGenerator() {
       </button>
       <button
         onClick=${() =>
-      navigator.clipboard.writeText("```\n" + pos2art(pos) + "```\n")}
+      navigator.clipboard.writeText("```\r\n" + pos2art(pos) + "```\r\n")}
         disabled=${pos ? false : true}
       >
         Copy ASCII art
