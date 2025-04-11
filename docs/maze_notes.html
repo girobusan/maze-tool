@@ -62,26 +62,44 @@ font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen
   <!--custom html here-->
 </head>
 <body>
-<main class="container" id="pageMain"><h1>Maze game notes</h1>
-<p>Maze is a chess-like cooperative game, published in 1982 and designed by Jim Deacove.</p>
+<main class="container" id="pageMain"><h1 id="Maze_game_notes">Maze game notes</h1>
+<p>Maze is a chess-like cooperative game, designed by Jim Deacove and published in 1982.</p>
 <p>→ <a href="https://boardgamegeek.com/boardgame/6268/maze">Maze page at Boardgamegeek</a></p>
-<p>Here are some positions, tested (solved) by me.</p>
-<h2>Solved</h2>
-<pre><code>    3 3 . . 1 T    
-  L T B . . B 2 2  
-M B S S . . 3 S L M
-M R 1 1 . . R B 3 M
-  L 2 R . . T L R  
-    2 T . . 1 S    
-</code></pre>
-<p><a href="https://girobusan.github.io/maze-tool/?LBRL3TS1223BS1RT1B3RT1T2SBLS2L3R">Link</a></p>
-<p>This is easy:</p>
+<p>Here are some positions, tested (solved) by me, roughly sorted by difficulty.</p>
+<p><span data-ihelper='headers-nav' data-params="%0AskipH1:%20true%0A"></span></p>
+<h2 id="Easy">Easy</h2>
 <pre><code>    L R . . R 3    
   2 1 1 . . 1 T B  
 M 2 3 L . . L S S M
 M S 3 R . . 2 3 R M
   T T B . . B L 1  
     S B . . T 2    
+</code></pre>
+<p><a href="https://girobusan.github.io/maze-tool/?LBRL3TS1223BS1RT1B3RT1T2SBLS2L3R">Link</a></p>
+<pre><code>    L T . . R 2    
+  T 2 1 . . 3 T S  
+M 1 S B . . S 1 2 M
+M R S 2 . . T B R M
+  3 B R . . L L 1  
+    L 3 . . B 3    
+</code></pre>
+<p><a href="https://girobusan.github.io/maze-tool/?T1R3L2SSBLT1B2R3R3STLB2T1BL3S2R1">Link</a></p>
+<p>Fully random:</p>
+<pre><code>    S 3 . . 2 B    
+  B 1 T . . T T S  
+M B T 2 . . 1 1 L M
+M R R S . . S R 2 M
+  L 2 L . . B 3 R  
+    1 3 . . L 3    
+</code></pre>
+<p><a href="https://girobusan.github.io/maze-tool/index.html?BBRLS1TR213T2SL32T1SBLBT1R33SL2R">Link</a></p>
+<h2 id="Medium">Medium</h2>
+<pre><code>    3 3 . . 1 T    
+  L T B . . B 2 2  
+M B S S . . 3 S L M
+M R 1 1 . . R B 3 M
+  L 2 R . . T L R  
+    2 T . . 1 S    
 </code></pre>
 <p><a href="https://girobusan.github.io/maze-tool/?LBRL3TS1223BS1RT1B3RT1T2SBLS2L3R">Link</a></p>
 <pre><code>    L B . . B R    
@@ -116,24 +134,6 @@ M L 3 1 . . R 1 S M
     B 3 . . L T    
 </code></pre>
 <p><a href="https://girobusan.github.io/maze-tool/?TLLRSTR32B1BS12321SRBL3L21TTBRS3">link</a></p>
-<p>This one is <strong>hard</strong>:</p>
-<pre><code>    S 1 . . R R    
-  R 3 3 . . S 1 2  
-M S 1 B . . 3 3 2 M
-M B 2 L . . T T L M
-  L T R . . S B B  
-    T 2 . . 1 L    
-</code></pre>
-<p><a href="https://girobusan.github.io/maze-tool/?RSBLS312TT13BLR2RS3TS1R13TBL22LB">Link</a></p>
-<p>This one is easy:</p>
-<pre><code>    L T . . R 2    
-  T 2 1 . . 3 T S  
-M 1 S B . . S 1 2 M
-M R S 2 . . T B R M
-  3 B R . . L L 1  
-    L 3 . . B 3    
-</code></pre>
-<p><a href="https://girobusan.github.io/maze-tool/?T1R3L2SSBLT1B2R3R3STLB2T1BL3S2R1">Link</a></p>
 <pre><code>    S 1 . . B R 
   1 L R . . S S 3 
 M 3 3 T . . 3 1 T M 
@@ -158,16 +158,16 @@ M 2 L L . . S 2 L M
     R S . . 3 S 
 </code></pre>
 <p><a href="https://girobusan.github.io/maze-tool/index.html?3T2BTSRLBR112L3SBRTSR3B312TS2LL1">Link</a></p>
-<p>Want to solve again</p>
-<pre><code>    3 T . . 3 T    
-  S 2 B . . 2 T 3  
-M S 1 B . . 1 R L M
-M 2 L R . . S S 1 M
-  R L 3 . . R B B  
-    1 T . . L 2    
+<h2 id="Hard">Hard</h2>
+<pre><code>    S 1 . . R R    
+  R 3 3 . . S 1 2  
+M S 1 B . . 3 3 2 M
+M B 2 L . . T T L M
+  L T R . . S B B  
+    T 2 . . 1 L    
 </code></pre>
-<p><a href="https://girobusan.github.io/maze-tool/?SS2R321LL1TBBR3T321SRLTTRSB23L1B">Link</a></p>
-<p>Also hard, fully random:</p>
+<p><a href="https://girobusan.github.io/maze-tool/?RSBLS312TT13BLR2RS3TS1R13TBL22LB">Link</a></p>
+<p>Fully random:</p>
 <pre><code>    R 1 . . R 2    
   L S B . . T 3 L  
 M T L 3 . . B L 1 M
@@ -176,20 +176,70 @@ M R S T . . B S S M
     3 2 . . 3 T    
 </code></pre>
 <p><a href="https://girobusan.github.io/maze-tool/index.html?LTR1RSLS231B3TB2RTBBR323LS2TL1S1">Link</a></p>
+<p>Want to solve again:</p>
+<pre><code>    3 T . . 3 T    
+  S 2 B . . 2 T 3  
+M S 1 B . . 1 R L M
+M 2 L R . . S S 1 M
+  R L 3 . . R B B  
+    1 T . . L 2    
+</code></pre>
+<p><a href="https://girobusan.github.io/maze-tool/?SS2R321LL1TBBR3T321SRLTTRSB23L1B">Link</a></p>
 </main>
 <footer id='pageFooter'><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
 
 <script>window.impData={}</script>
 <script id="pageData" type="text/markdown">Maze game notes
 ===== 
-Maze is a chess-like cooperative game, published in 1982 and designed by Jim Deacove.
+Maze is a chess-like cooperative game, designed by Jim Deacove and published in 1982.
 
 → [Maze page at Boardgamegeek](https://boardgamegeek.com/boardgame/6268/maze)
 
-Here are some positions, tested (solved) by me.
+Here are some positions, tested (solved) by me, roughly sorted by difficulty.
 
-Solved
+```h:headers-nav
+skipH1: true
+```
+
+Easy
 ----
+```
+    L R . . R 3    
+  2 1 1 . . 1 T B  
+M 2 3 L . . L S S M
+M S 3 R . . 2 3 R M
+  T T B . . B L 1  
+    S B . . T 2    
+```
+
+[Link](https://girobusan.github.io/maze-tool/?LBRL3TS1223BS1RT1B3RT1T2SBLS2L3R)
+
+```
+    L T . . R 2    
+  T 2 1 . . 3 T S  
+M 1 S B . . S 1 2 M
+M R S 2 . . T B R M
+  3 B R . . L L 1  
+    L 3 . . B 3    
+```
+
+[Link](https://girobusan.github.io/maze-tool/?T1R3L2SSBLT1B2R3R3STLB2T1BL3S2R1)
+
+Fully random:
+```
+    S 3 . . 2 B    
+  B 1 T . . T T S  
+M B T 2 . . 1 1 L M
+M R R S . . S R 2 M
+  L 2 L . . B 3 R  
+    1 3 . . L 3    
+```
+[Link](https://girobusan.github.io/maze-tool/index.html?BBRLS1TR213T2SL32T1SBLBT1R33SL2R)
+
+Medium
+------
+
+
 
 ```
     3 3 . . 1 T    
@@ -201,18 +251,7 @@ M R 1 1 . . R B 3 M
 ```
 [Link](https://girobusan.github.io/maze-tool/?LBRL3TS1223BS1RT1B3RT1T2SBLS2L3R)
 
-This is easy:
-```
-    L R . . R 3    
-  2 1 1 . . 1 T B  
-M 2 3 L . . L S S M
-M S 3 R . . 2 3 R M
-  T T B . . B L 1  
-    S B . . T 2    
-```
 
- 
- [Link](https://girobusan.github.io/maze-tool/?LBRL3TS1223BS1RT1B3RT1T2SBLS2L3R)
  
 ```
     L B . . B R    
@@ -255,29 +294,9 @@ M L 3 1 . . R 1 S M
 
 [link](https://girobusan.github.io/maze-tool/?TLLRSTR32B1BS12321SRBL3L21TTBRS3)
 
-This one is **hard**:
-```
-    S 1 . . R R    
-  R 3 3 . . S 1 2  
-M S 1 B . . 3 3 2 M
-M B 2 L . . T T L M
-  L T R . . S B B  
-    T 2 . . 1 L    
-```
-[Link](https://girobusan.github.io/maze-tool/?RSBLS312TT13BLR2RS3TS1R13TBL22LB)
 
-This one is easy:
 
-```
-    L T . . R 2    
-  T 2 1 . . 3 T S  
-M 1 S B . . S 1 2 M
-M R S 2 . . T B R M
-  3 B R . . L L 1  
-    L 3 . . B 3    
-```
 
-[Link](https://girobusan.github.io/maze-tool/?T1R3L2SSBLT1B2R3R3STLB2T1BL3S2R1)
 
 ```
     S 1 . . B R 
@@ -310,7 +329,34 @@ M 2 L L . . S 2 L M
 ``` 
 [Link](https://girobusan.github.io/maze-tool/index.html?3T2BTSRLBR112L3SBRTSR3B312TS2LL1)
 
-Want to solve again
+
+
+Hard
+----
+
+
+```
+    S 1 . . R R    
+  R 3 3 . . S 1 2  
+M S 1 B . . 3 3 2 M
+M B 2 L . . T T L M
+  L T R . . S B B  
+    T 2 . . 1 L    
+```
+[Link](https://girobusan.github.io/maze-tool/?RSBLS312TT13BLR2RS3TS1R13TBL22LB)
+
+Fully random:
+```
+    R 1 . . R 2    
+  L S B . . T 3 L  
+M T L 3 . . B L 1 M
+M R S T . . B S S M
+  1 2 B . . R 2 1  
+    3 2 . . 3 T    
+```
+[Link](https://girobusan.github.io/maze-tool/index.html?LTR1RSLS231B3TB2RTBBR323LS2TL1S1)
+
+Want to solve again:
 
 ```
     3 T . . 3 T    
@@ -320,20 +366,6 @@ M 2 L R . . S S 1 M
   R L 3 . . R B B  
     1 T . . L 2    
 ```
-
-
-[Link](https://girobusan.github.io/maze-tool/?SS2R321LL1TBBR3T321SRLTTRSB23L1B)
-
-
-Also hard, fully random:
-```
-    R 1 . . R 2    
-  L S B . . T 3 L  
-M T L 3 . . B L 1 M
-M R S T . . B S S M
-  1 2 B . . R 2 1  
-    3 2 . . 3 T    
-```
-[Link](https://girobusan.github.io/maze-tool/index.html?LTR1RSLS231B3TB2RTBBR323LS2TL1S1)</script>
+[Link](https://girobusan.github.io/maze-tool/?SS2R321LL1TBBR3T321SRLTTRSB23L1B)</script>
 </body>
 </html>
